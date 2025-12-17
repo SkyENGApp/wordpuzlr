@@ -5,128 +5,120 @@
   <title>WordPuzlr Blog – Word Puzzle Strategies, Tips & Brain Training</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PRIMARY SEO -->
-  <meta name="description" content="The official WordPuzlr blog. Learn strategies for 3–7 letter word puzzles, improve pattern recognition, understand statistics, and sharpen your brain with unlimited word games.">
-  <meta name="keywords" content="word puzzle blog,word game tips,word puzzle strategies,brain training,spelling game tips,logic puzzles,word patterns,ios word game">
+  <meta name="description" content="The official WordPuzlr blog. Learn strategies for 3–7 letter word puzzles, improve pattern recognition, and sharpen your brain.">
+  <meta name="keywords" content="word puzzle blog, word game tips, word puzzle strategies, brain training, ios word game">
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="WordPuzlr Blog – Word Puzzle Tips & Strategies">
-  <meta property="og:description" content="Guides, tips, and insights to help you master unlimited 3–7 letter word puzzles.">
-  <meta property="og:image" content="1024.png">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://wordpuzlr.github.io/blogs.html">
-
-  <!-- TWITTER -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WordPuzlr Blog">
-  <meta name="twitter:description" content="Strategies and insights for word puzzle lovers.">
-  <meta name="twitter:image" content="1024.png">
-
-  <!-- APP STORE -->
-  <meta name="apple-itunes-app" content="app-id=XXXXXXXXXX">
-
-  <link rel="canonical" href="https://wordpuzlr.github.io/blogs.html">
-  <link rel="apple-touch-icon" href="1024.png">
   <link rel="icon" type="image/png" href="1024.png">
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- STRUCTURED DATA -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "WordPuzlr Blog",
-    "description": "Articles about word puzzle strategies, statistics, and brain training.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "WordPuzlr",
-      "logo": {"@type": "ImageObject", "url": "1024.png"}
+  <style>
+    :root {
+      --accent-blue: #0a84ff;
+      --bg-black: #000000;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border-light: rgba(255, 255, 255, 0.08);
+      --text-main: #f5f5f7;
+      --text-dim: #86868b;
     }
-  }
-  </script>
 
-  <meta name="robots" content="index, follow">
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-black);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Reading Progress Bar */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: var(--accent-blue); width: 0%; z-index: 1100;
+      transition: width 0.1s ease;
+    }
+
+    /* NAVIGATION */
+    .top-nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-container {
+      max-width: 1200px; margin: auto; padding: 16px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; }
+    .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 28px; font-size: 15px; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent-blue); }
+
+    /* BLOG CONTAINER */
+    main { max-width: 840px; margin: 80px auto; padding: 0 24px; }
+    
+    .fade-in {
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    header.blog-header { text-align: center; margin-bottom: 60px; }
+    h1 {
+      font-size: clamp(34px, 5vw, 60px); font-weight: 800; line-height: 1.1;
+      background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 24px;
+    }
+    .subtitle { font-size: 20px; color: var(--text-dim); max-width: 700px; margin: 0 auto; }
+
+    /* TABLE OF CONTENTS */
+    .toc-card {
+      background: var(--card-bg); border: 1px solid var(--border-light);
+      border-radius: 24px; padding: 32px; margin: 40px 0;
+    }
+    .toc-card h3 { font-size: 18px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; color: var(--accent-blue); }
+    .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 600px) { .toc-grid { grid-template-columns: 1fr; } }
+    .toc-grid a { 
+      color: var(--text-main); text-decoration: none; font-size: 15px; 
+      padding: 8px 12px; border-radius: 8px; transition: 0.2s;
+      background: rgba(255,255,255,0.02);
+    }
+    .toc-grid a:hover { background: rgba(10, 132, 255, 0.1); color: var(--accent-blue); }
+
+    /* CONTENT SECTIONS */
+    section { margin-bottom: 60px; }
+    h2 { font-size: 32px; font-weight: 700; margin-bottom: 20px; color: #fff; }
+    p { margin-bottom: 20px; font-size: 18px; color: #d1d1d6; }
+    ul { margin-left: 20px; margin-bottom: 24px; }
+    li { margin-bottom: 12px; font-size: 17px; color: #d1d1d6; }
+    strong { color: #fff; }
+
+    /* IMAGES (Sky ENG Style) */
+    .blog-image-wrap {
+      border-radius: 24px; overflow: hidden; margin: 40px 0;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .blog-image-wrap img { width: 100%; display: block; }
+
+    /* CTA SECTION */
+    .cta-box {
+      background: linear-gradient(145deg, rgba(10, 132, 255, 0.1), transparent);
+      border: 1px solid rgba(10, 132, 255, 0.3);
+      border-radius: 32px; padding: 60px 40px; text-align: center; margin-top: 100px;
+    }
+    .app-badge { height: 54px; margin-top: 24px; transition: 0.3s; }
+    .app-badge:hover { transform: scale(1.05); }
+
+    footer {
+      padding: 80px 24px; border-top: 1px solid var(--border-light);
+      text-align: center; color: var(--text-dim);
+    }
+    .footer-links { margin-bottom: 24px; }
+    .footer-links a { color: var(--text-dim); text-decoration: none; margin: 0 12px; font-size: 14px; }
+  </style>
 </head>
 
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #000;
-    color: #f5f5f7;
-    line-height: 1.6;
-  }
-
-  .top-nav {
-    position: sticky; top: 0; z-index: 1000;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .nav-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav-logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a { color: #f5f5f7; text-decoration: none; }
-  .nav-links a.active, .nav-links a:hover { color: #0a84ff; }
-
-  main { max-width: 900px; margin: 60px auto; padding: 0 24px; }
-
-  article {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 48px;
-  }
-
-  h1 {
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 800;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #fff, #0a84ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  h2 { font-size: 32px; margin-top: 48px; margin-bottom: 16px; }
-  h3 { font-size: 24px; margin-top: 32px; margin-bottom: 12px; color: #0a84ff; }
-  p { margin-bottom: 18px; color: #f5f5f7; }
-  ul { margin-left: 24px; margin-bottom: 18px; }
-
-  .toc {
-    background: rgba(255,255,255,0.05);
-    padding: 24px;
-    border-radius: 12px;
-    margin: 32px 0;
-  }
-
-  .cta {
-    text-align: center;
-    padding: 48px;
-    margin-top: 60px;
-    border: 1px solid rgba(10,132,255,0.25);
-    border-radius: 16px;
-  }
-
-  footer {
-    margin-top: 80px;
-    padding: 40px 20px;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    color: #86868b;
-  }
-</style>
-
 <body>
+<div id="progress-bar"></div>
 
 <nav class="top-nav">
   <div class="nav-container">
@@ -134,78 +126,106 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="blogs.html" class="active">Blog</a>
-      <a href="https://apps.apple.com/app/idXXXXXXXXXX" target="_blank">Download</a>
+      <a href="https://apps.apple.com/app/idXXXXXXXXXX">Download</a>
     </div>
   </div>
 </nav>
 
 <main>
-  <article>
-    <h1>Master WordPuzlr: Tips, Strategies & Insights</h1>
-    <p class="subtitle">Learn how to solve 3–7 letter word puzzles faster, recognize patterns, and use statistics to improve your results.</p>
+  <header class="blog-header fade-in">
+    <h1>Master WordPuzlr: Strategies & Insights</h1>
+    <p class="subtitle">The definitive guide to solving 3–7 letter word puzzles and boosting your cognitive agility.</p>
+  </header>
 
-    <div class="toc">
-      <h3>Table of Contents</h3>
-      <ul>
-        <li><a href="#what-is-wordpuzlr">What is WordPuzlr?</a></li>
-        <li><a href="#word-lengths">Choosing the Right Word Length</a></li>
-        <li><a href="#strategies">Core Solving Strategies</a></li>
-        <li><a href="#hints">Using Hints Wisely</a></li>
-        <li><a href="#stats">Understanding Your Statistics</a></li>
-        <li><a href="#brain">Brain Training Benefits</a></li>
-      </ul>
+  <div class="toc-card fade-in">
+    <h3>Quick Links</h3>
+    <div class="toc-grid">
+      <a href="#what-is-wordpuzlr">Overview</a>
+      <a href="#word-lengths">Word Length Strategy</a>
+      <a href="#strategies">Solving Techniques</a>
+      <a href="#hints">Smart Hint Usage</a>
+      <a href="#stats">Analyzing Progress</a>
+      <a href="#brain">Cognitive Benefits</a>
     </div>
+  </div>
 
-    <section id="what-is-wordpuzlr">
-      <h2>What is WordPuzlr?</h2>
-      <p>WordPuzlr is a free iOS word puzzle game that lets you play unlimited puzzles with word lengths from 3 to 7 letters. Each puzzle challenges your vocabulary, logic, and pattern recognition skills.</p>
-    </section>
-
-    <section id="word-lengths">
-      <h2>Choosing the Right Word Length</h2>
-      <p>Shorter words are great for quick sessions and learning letter patterns, while longer words reward careful planning and deduction.</p>
-      <ul>
-        <li><strong>3–4 letters:</strong> Fast, intuitive, pattern-based play</li>
-        <li><strong>5 letters:</strong> Balanced challenge and strategy</li>
-        <li><strong>6–7 letters:</strong> Deeper logic and elimination</li>
-      </ul>
-    </section>
-
-    <section id="strategies">
-      <h2>Core Solving Strategies</h2>
-      <ul>
-        <li>Start with words that cover common vowels</li>
-        <li>Avoid repeating letters until necessary</li>
-        <li>Use color feedback to eliminate entire letter groups</li>
-      </ul>
-    </section>
-
-    <section id="hints">
-      <h2>Using Hints Wisely</h2>
-      <p>Hints are designed to nudge your thinking, not solve the puzzle. Use them when you are genuinely stuck to reinforce learning.</p>
-    </section>
-
-    <section id="stats">
-      <h2>Understanding Your Statistics</h2>
-      <p>Your stats reveal patterns in your play style, including win rate, guess distribution, and performance by word length.</p>
-    </section>
-
-    <section id="brain">
-      <h2>Brain Training Benefits</h2>
-      <p>Regular word puzzle play helps improve memory, focus, and problem-solving skills while remaining relaxing and fun.</p>
-    </section>
-
-    <div class="cta">
-      <h2>Start Solving Today</h2>
-      <p>Play unlimited word puzzles and track your progress with WordPuzlr.</p>
-      <a href="https://apps.apple.com/app/idXXXXXXXXXX" target="_blank">Download on the App Store</a>
+  <section id="what-is-wordpuzlr" class="fade-in">
+    <h2>The Unlimited Challenge</h2>
+    <p>WordPuzlr redefines the classic word puzzle by removing the "once-a-day" restriction. It is designed for enthusiasts who want to immerse themselves in linguistic challenges without waiting for a timer.</p>
+    
+    <div class="blog-image-wrap">
+      
     </div>
-  </article>
+  </section>
+
+  <section id="word-lengths" class="fade-in">
+    <h2>Choosing Your Difficulty</h2>
+    <p>The complexity of a puzzle changes drastically based on the length of the target word:</p>
+    <ul>
+      <li><strong>3–4 Letters:</strong> Perfect for high-speed "blitz" sessions. These focus on common suffixes and vowel placement.</li>
+      <li><strong>5 Letters:</strong> The gold standard. Requires a balance of elimination and vowel hunting.</li>
+      <li><strong>6–7 Letters:</strong> Advanced logic territory. Here, understanding compound words and prefixes becomes your greatest asset.</li>
+    </ul>
+  </section>
+
+  <section id="strategies" class="fade-in">
+    <h2>Core Solving Strategies</h2>
+    <p>To maintain a high win streak, you need a systematic approach. Most master players follow these three rules:</p>
+    <ol style="margin-left: 20px; color: #d1d1d6;">
+      <li style="margin-bottom: 15px;"><strong>The Vowel Hunt:</strong> Your first two guesses should ideally cover A, E, I, O, and U.</li>
+      <li style="margin-bottom: 15px;"><strong>Consonant Clustering:</strong> Look for common pairs like TH, CH, ST, and PL.</li>
+      <li style="margin-bottom: 15px;"><strong>Elimination Logic:</strong> Focus as much on what the word <em>isn't</em> as what it <em>is</em>.</li>
+    </ol>
+  </section>
+
+  <section id="stats" class="fade-in">
+    <h2>Understanding Your Statistics</h2>
+    <p>WordPuzlr provides deep analytics on your performance. By reviewing your "Guess Distribution," you can see if you are being too cautious or too aggressive in your early turns.</p>
+    <div class="blog-image-wrap">
+      
+    </div>
+  </section>
+
+  <div class="cta-box fade-in">
+    <h2>Ready to Train Your Brain?</h2>
+    <p>Join thousands of players sharpening their minds one word at a time. No limits, no cost, just pure puzzles.</p>
+    <a href="https://apps.apple.com/app/idXXXXXXXXXX" target="_blank">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" class="app-badge" alt="Download on App Store">
+    </a>
+  </div>
 </main>
 
 <footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="mailto:codelovin@outlook.com">Support</a>
+    <a href="#top">Back to Top</a>
+  </div>
   <p>&copy; 2025 WordPuzlr. All rights reserved.</p>
 </footer>
+
+<script>
+  // Reading progress bar
+  window.onscroll = function() {
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrolled = (winScroll / height) * 100;
+    document.getElementById("progress-bar").style.width = scrolled + "%";
+  };
+
+  // Scroll animations
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
