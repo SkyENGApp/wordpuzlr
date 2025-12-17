@@ -4,121 +4,215 @@
   <meta charset="UTF-8">
   <title>WordPuzlr – Unlimited Word Puzzles (3–7 Letters) | Free Brain Game for iOS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- PRIMARY SEO -->
+  
   <meta name="description" content="WordPuzlr is a free, unlimited word puzzle game for iOS. Play 3–7 letter word challenges anytime, track detailed statistics, use smart hints, and keep your brain sharp. No daily limits. 100% free.">
   <meta name="keywords" content="word puzzle game,word game ios,brain training game,spelling game,logic puzzle,word puzzles free,unlimited word puzzles,5 letter word game,7 letter word game,offline word game">
-
-  <!-- INTERNATIONAL KEYWORDS -->
-  <meta name="keywords" lang="es" content="juego de palabras,rompecabezas de palabras,entrenamiento cerebral">
-  <meta name="keywords" lang="fr" content="jeu de mots,puzzle de mots,jeu de réflexion">
-  <meta name="keywords" lang="de" content="wortspiel,wort rätsel,gehirntraining">
-  <meta name="keywords" lang="pt" content="jogo de palavras,quebra-cabeça de palavras">
-  <meta name="keywords" lang="ja" content="ワードパズル,言葉ゲーム,脳トレ">
-  <meta name="keywords" lang="ko" content="단어 퍼즐,두뇌 게임">
-
-  <!-- OPEN GRAPH -->
+  
   <meta property="og:title" content="WordPuzlr – Unlimited Word Puzzles">
   <meta property="og:description" content="Solve unlimited 3–7 letter word puzzles, use hints, and track powerful stats. Free on iOS.">
-  <meta property="og:image" content="1024.png">
+  <meta property="og:image" content="https://wordpuzlr.github.io/1024.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wordpuzlr.github.io">
-
-  <!-- TWITTER -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WordPuzlr – Unlimited Word Puzzles">
-  <meta name="twitter:description" content="Free, unlimited word puzzles with smart hints and stats.">
-  <meta name="twitter:image" content="1024.png">
-
-  <!-- APP STORE -->
+  
   <meta name="apple-itunes-app" content="app-id=XXXXXXXXXX">
-  <meta property="al:ios:app_store_id" content="XXXXXXXXXX">
-
-  <link rel="canonical" href="https://wordpuzlr.github.io">
-  <link rel="apple-touch-icon" href="1024.png">
+  
   <link rel="icon" type="image/png" href="1024.png">
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --accent-blue: #0a84ff;
+      --deep-black: #000;
+      --soft-white: #f5f5f7;
+      --text-secondary: #86868b;
+    }
 
-  <!-- STRUCTURED DATA -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "WordPuzlr",
-    "operatingSystem": "iOS",
-    "applicationCategory": "GameApplication",
-    "genre": ["Word Game", "Puzzle", "Brain Training"],
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-    "description": "Unlimited word puzzle game with 3–7 letter challenges, smart hints, and detailed statistics.",
-    "image": "1024.png"
-  }
-  </script>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--deep-black);
+      color: var(--soft-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-  <meta name="robots" content="index, follow">
+    /* NAVIGATION */
+    .top-nav {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 16px; transition: 0.25s; }
+    .nav-links a:hover { color: var(--accent-blue); }
+
+    /* HERO */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(circle at 50% 30%, rgba(10, 132, 255, 0.15), transparent 70%), var(--deep-black);
+    }
+    .app-icon {
+      width: 120px; height: 120px;
+      border-radius: 32px;
+      margin-bottom: 30px;
+      box-shadow: 0 15px 50px rgba(10, 132, 255, 0.4);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    
+    h1 {
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+    .tagline { font-size: clamp(18px, 2.5vw, 24px); color: var(--text-secondary); margin-bottom: 40px; }
+    .badge { height: 50px; transition: 0.3s; }
+    .badge:hover { transform: scale(1.05); }
+
+    /* FEATURES */
+    .features { max-width: 1400px; margin: 0 auto; padding: 80px 20px; }
+    .feature-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 60px;
+      transition: 0.4s;
+    }
+    .feature-item:hover { transform: translateY(-4px); border-color: rgba(10, 132, 255, 0.3); }
+    .feature-item:nth-child(even) { direction: rtl; }
+    .feature-item:nth-child(even) > * { direction: ltr; }
+
+    .feature-content h3 { font-size: 24px; margin-bottom: 16px; }
+    .feature-content p { color: var(--text-secondary); font-size: 17px; }
+
+    /* IMAGE STYLING (Matching Sky ENG exactly) */
+    .feature-image {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+    .feature-image img { width: 100%; display: block; transition: 0.4s; }
+    .feature-image:hover img { transform: scale(1.01); }
+
+    /* GRID FOR STATS/PRIVACY */
+    .info-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 20px; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .info-card { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+    }
+    .footer-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 24px; }
+    .footer-links a { color: var(--text-secondary); text-decoration: none; }
+
+    @media (max-width: 1024px) {
+      .feature-item { grid-template-columns: 1fr !important; direction: ltr !important; }
+    }
+  </style>
 </head>
-
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: #000; color: #f5f5f7; line-height: 1.6; }
-  a { color: #0a84ff; text-decoration: none; }
-  header, section, footer { padding: 80px 20px; max-width: 1200px; margin: auto; }
-  h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; }
-  h1 { font-size: clamp(40px, 6vw, 72px); }
-  h2 { font-size: clamp(28px, 4vw, 48px); margin-bottom: 24px; }
-  p { color: #86868b; font-size: 18px; }
-  .hero { text-align: center; }
-  .hero img { width: 140px; border-radius: 28px; margin-bottom: 24px; }
-  .badge { margin-top: 32px; height: 56px; }
-  .grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-  .card { background: rgba(255,255,255,0.04); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.08); }
-</style>
-
 <body>
 
+<nav class="top-nav">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">WordPuzlr</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#support">Support</a>
+    </div>
+  </div>
+</nav>
+
 <header class="hero">
-  <img src="1024.png" alt="WordPuzlr App Icon">
-  <h1>WordPuzlr</h1>
-  <p>Unlimited word puzzles. Choose 3–7 letters. Play anytime. Track everything.</p>
+  <img src="1024.png" alt="WordPuzlr Icon" class="app-icon">
+  <h1>Unlimited Word Puzzles</h1>
+  <p class="tagline">The ultimate brain training challenge with 3–7 letter word puzzles.</p>
   <a href="https://apps.apple.com/app/idXXXXXXXXXX" target="_blank">
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" class="badge" alt="Download on the App Store">
   </a>
 </header>
 
-<section>
-  <h2>Why WordPuzlr?</h2>
-  <div class="grid">
-    <div class="card"><h3>Unlimited Play</h3><p>No daily limits. Solve as many word puzzles as you want, whenever you want.</p></div>
-    <div class="card"><h3>3–7 Letter Words</h3><p>Choose your difficulty and keep the challenge fresh every game.</p></div>
-    <div class="card"><h3>Smart Hints</h3><p>Use hints strategically to learn patterns without giving everything away.</p></div>
-    <div class="card"><h3>Advanced Statistics</h3><p>Track win rates, streaks, guess distribution, and performance by word length.</p></div>
+<section id="features" class="features">
+  <div class="feature-item">
+    <div class="feature-content">
+      <h3>Unlimited Daily Play</h3>
+      <p>Why wait 24 hours for a new word? WordPuzlr lets you play infinite rounds. Keep your brain sharp and your vocabulary growing with zero restrictions.</p>
+    </div>
+    <div class="feature-image">
+      <img src="LandingPage.png" alt="WordPuzlr Gameplay">
+    </div>
+  </div>
+
+  <div class="feature-item">
+    <div class="feature-content">
+      <h3>Adjustable Difficulty</h3>
+      <p>Choose between 3, 4, 5, 6, or 7-letter words. Whether you want a quick 3-letter warm-up or a grueling 7-letter masterclass, WordPuzlr scales to your skill level.</p>
+    </div>
+    <div class="feature-image">
+      <img src="ChooseWordLength.png" alt="Select Word Length Screen">
+    </div>
+  </div>
+
+  <div class="feature-item">
+    <div class="feature-content">
+      <h3>Smart Hints & Analytics</h3>
+      <p>Stuck on a tricky word? Use our strategic hints to get back on track. Detailed statistics help you monitor your streaks, guess accuracy, and performance over time.</p>
+    </div>
+    <div class="feature-image">
+      <img src="StatisticsView1.png" alt="Detailed Statistics Screen">
+    </div>
   </div>
 </section>
 
-<section>
-  <h2>Screenshots</h2>
-  <div class="grid">
-    <img src="LandingPage.png" alt="WordPuzlr landing screen">
-    <img src="ChooseWordLength.png" alt="Choose word length">
-    <img src="HintsView.png" alt="Hints system">
-    <img src="StatisticsView1.png" alt="Statistics view">
-    <img src="StatisticsView2.png" alt="Detailed analytics">
+<section class="info-section">
+  <div class="info-grid">
+    <div id="privacy" class="info-card">
+      <h3>Privacy First</h3>
+      <p>WordPuzlr does not collect personal data. Your gameplay stats and progress are stored safely on your device.</p>
+    </div>
+    <div id="support" class="info-card">
+      <h3>Support</h3>
+      <p>Need help? Contact our team at <a href="mailto:codelovin@outlook.com">codelovin@outlook.com</a>. We reply within 48 hours.</p>
+    </div>
   </div>
-</section>
-
-<section id="privacy">
-  <h2>Privacy</h2>
-  <p>WordPuzlr does not collect personal data. All gameplay statistics are stored locally on your device. No signups required but we do use third-party ads which do their own tracking.</p>
-</section>
-
-<section id="support">
-  <h2>Support</h2>
-  <p>If you need help or have feedback, contact us at <a href="mailto:codelovin@outlook.com">codelovin@outlook.com</a>. We usually reply within 48 hours.</p>
 </section>
 
 <footer>
+  <div class="footer-links">
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#support">Support</a>
+    <a href="https://apps.apple.com/app/idXXXXXXXXXX">App Store</a>
+  </div>
   <p>&copy; 2025 WordPuzlr. All rights reserved.</p>
-  <p><a href="#privacy">Privacy Policy</a> · <a href="#support">Support</a></p>
 </footer>
 
 </body>
